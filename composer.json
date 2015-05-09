@@ -19,8 +19,8 @@
     ],
     "require": {
         "php": ">=5.5",
-        "prooph/link-app-core" : "0.1.*",
-        "prooph/psb-bernard-dispatcher": "~0.1"
+        "prooph/link-app-core" : "dev-master",
+        "prooph/psb-bernard-dispatcher": "~0.3"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
