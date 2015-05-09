@@ -30,7 +30,7 @@ return [
             \Prooph\Link\Application\Definition::APP_SERVICE_WORKFLOW_PROCESSOR_MESSAGE_QUEUE => 'prooph.link.message_queue.producer',
         ]
     ],
-    'prooph.psb' => [
+    'proophessor' => [
         'event_router_map' => [
             \Prooph\Link\Application\Event\TickOccurred::class => [
                 'prooph.link.message_queue.consumer'
