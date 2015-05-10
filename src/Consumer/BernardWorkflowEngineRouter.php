@@ -14,6 +14,7 @@ use Bernard\Envelope;
 use Bernard\Router;
 use Prooph\Common\Messaging\RemoteMessage;
 use Prooph\Processing\Processor\WorkflowEngine;
+use Prooph\ServiceBus\Message\Bernard\BernardMessage;
 
 final class BernardWorkflowEngineRouter implements Router
 {
@@ -41,7 +42,7 @@ final class BernardWorkflowEngineRouter implements Router
     {
         $message = $envelope->getMessage();
 
-        if (! $message instanceof RemoteMessage) {
+        if (! $message instanceof BernardMessage) {
             throw new \InvalidArgumentException(sprintf(
                 "Routing the message %s failed due to wrong message type",
                 $envelope->getName()
@@ -52,10 +53,10 @@ final class BernardWorkflowEngineRouter implements Router
     }
 
     /**
-     * @param RemoteMessage $message
+     * @param BernardMessage $message
      */
-    public function routeMessage(RemoteMessage $message)
+    public function routeMessage(BernardMessage $message)
     {
-        $this->workflowEngine->dispatch($message, 'prooph.link.message_queue.consumer');
+        $this->workflowEngine->dispatch($message->getRemoteMessage(), 'prooph.link.message_queue.consumer');
     }
 }
